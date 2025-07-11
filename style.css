@@ -1,0 +1,127 @@
+
+body {
+  margin: 0;
+  padding: 3rem;
+  font-family: 'IBM Plex Mono', monospace;
+  background: #EDECE9;
+  color: #000;
+  max-width: max-content;
+}
+
+header, footer {
+  text-align: center;
+  padding: 2em;
+}
+
+.container {
+  max-width: max-content;
+}
+
+.div-project {
+  margin-bottom: 2rem;
+}
+
+.divimg{
+  height: fit-content;
+}
+
+.divtext {
+  /*border: 2px solid black;*/
+}
+
+.texth3 {
+  text-transform: uppercase;
+  font-family: "Manrope";
+  font-weight: 200;
+
+}
+
+.divnotes {
+  border-top: 1.5px dashed #000000;
+  border-bottom: 1.5px dashed #000000;
+  padding-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.textnotes {
+  color:#c0c0c0;
+  line-height: 1.6;
+  margin-bottom: 0px;
+  font-weight: bold;
+}
+
+.listnotes {
+  padding: 0px;
+  color:#bcbcbc;
+  list-style-type: none;
+}
+
+.listnotes li::before {
+  content: "✱ ";
+}
+
+.textcat {
+  line-height: 1.6;
+  margin-bottom: 0px;
+}
+
+.textesp {
+  color:#535353;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.img-projects {
+  width:100%;
+}
+
+.padding-big {
+  padding: 0rem 5rem;
+}
+
+/*
+.intro {
+  text-align: center;
+  padding: 1em 2em;
+  font-size: 1.1em;
+}
+
+.proyectos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1em;
+  padding: 2em;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.proyecto {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.proyecto img {
+  width: 100%;
+  display: block;
+}
+
+.proyecto span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  width: 100%;
+  padding: 0.5em;
+  font-size: 0.9em;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.proyecto:hover span {
+  opacity: 1;
+}
+*/
