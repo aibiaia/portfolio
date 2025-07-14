@@ -9,6 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <!--<header>
     <h1>Bia Bittencourt</h1>
@@ -17,7 +18,7 @@
   <main>
     <div class="container p-lg-4 p-sm-1 fade-in">
       <!--intro-->
-      <div class="row div-project">
+      <div class="row div-project pt-0">
         <div class="col-sm-12 col-lg-3 divtext">
           <h3 class="texth3">Bia Bittencourt</h3>
           <p class="textcat">Hola! Soc la Bia, dissenyadora gràfica i de motion, amb un enfocament centrat en el disseny editorial i la narrativa visual. També sóc fundadora de No Libros, una editorial independent amb seu a Barcelona. Em moc entre el disseny, l’edició i el motion, impulsada per la col·laboració i l’experimentació.</p>
@@ -25,11 +26,15 @@
         </div>
         <div class="col-sm-12 col-lg-1">
         </div>
-        <div class="col-sm-12 col-lg-8 divimg">
+        <div class="col-sm-12 col-lg-8 divmenu">
+          <a href="#" data-target="#div-nolibros" class="mr-2 scroll-link">no libros</a><br/>
+          <a href="#" data-target="#div-plana" class="mr-2 scroll-link">plana</a><br/>
+          <a href="#" data-target="#div-autopubli" class="mr-2 scroll-link">auto i/o publicació</a><br/>
+          <a href="#" data-target="#div-disseny" class="mr-2 scroll-link">disseny</a><br/>
         </div>
       </div>
       <!--no libros-->
-      <div class="row div-project">
+      <div class="row div-project" id="div-nolibros">
         <div class="col-sm-12 col-lg-3 divtext">
           <h3 class="texth3">No libros</h3>
           <div class="col-12 divnotes">
@@ -52,7 +57,7 @@
         </div>
       </div>
       <!--plana-->
-      <div class="row div-project">
+      <div class="row div-project" id="div-plana">
         <div class="col-sm-12 col-lg-3 divtext">
           <h3 class="texth3">Plana</h3>
           <div class="col-12 divnotes">
@@ -97,7 +102,7 @@ En paralelo, creé Casa Plana, un espacio cultural autogestionado en São Paulo 
         </div>
       </div>
       <!--autopublica-->
-      <div class="row div-project">
+      <div class="row div-project" id="div-autopubli">
         <div class="col-sm-12 col-lg-3 divtext">
           <h3 class="texth3">auto i/o publicació</h3>
           <div class="col-12 divnotes">
@@ -124,7 +129,7 @@ En paralelo, creé Casa Plana, un espacio cultural autogestionado en São Paulo 
         </div>
       </div>
       <!--disseny-->
-      <div class="row div-project">
+      <div class="row div-project" id="div-disseny">
         <div class="col-sm-12 col-lg-3 divtext">
           <h3 class="texth3">Disseny</h3>
           <div class="col-12 divnotes">
@@ -181,9 +186,36 @@ En paralelo, creé Casa Plana, un espacio cultural autogestionado en São Paulo 
         </div>
       </div>
     </div>
+    <a href="#" class="scroll-top">↑</a>
   </main>
   <footer>
-    <p><a href="mailto:bia@example.com">bia@nolibros.org</a></p>
+    <p><a href="mailto:bia@example.com" style="border-top: 1.5px dashed #000000;">contacto</a></p>
   </footer>
 </body>
+<script>
+document.querySelectorAll('.scroll-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault(); // Evitar canvi de URL
+    const target = document.querySelector(this.dataset.target);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+const scrollTopButton = document.querySelector('.scroll-top');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    scrollTopButton.classList.add('show');
+  } else {
+    scrollTopButton.classList.remove('show');
+  }
+});
+
+scrollTopButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
 </html>
