@@ -1,7 +1,7 @@
-
-html{
+html {
   scroll-behavior: smooth;
 }
+
 body {
   margin: 0;
   font-family: 'IBM Plex Mono', monospace;
@@ -16,9 +16,10 @@ header, footer {
 }
 
 a {
-  color: #000000;
+  color: #000;
   text-decoration: none;
 }
+
 a:hover {
   color: #757575;
 }
@@ -30,9 +31,10 @@ a:hover {
 .divmenu {
   text-align: right;
 }
+
 .divmenu a {
   text-transform: uppercase;
-  font-family: "Manrope";
+  font-family: 'Manrope';
   font-weight: 200;
   font-size: 28px;
 }
@@ -42,78 +44,73 @@ a:hover {
   padding-top: 2rem;
 }
 
-.divimg{
+.divimg {
   height: fit-content;
-}
-
-.divtext {
-  /*border: 2px solid black;*/
 }
 
 .texth3 {
   text-transform: uppercase;
-  font-family: "Manrope";
+  font-family: 'Manrope';
   font-weight: 200;
-
 }
 
 .divnotes {
-  border-top: 1.5px dashed #000000;
-  border-bottom: 1.5px dashed #000000;
+  border-top: 1.5px dashed #000;
+  border-bottom: 1.5px dashed #000;
   padding-top: 1rem;
   margin-bottom: 0.5rem;
 }
 
 .textnotes {
-  color:#c0c0c0;
+  color: #c0c0c0;
   line-height: 1.6;
-  margin-bottom: 0px;
+  margin-bottom: 0;
   font-weight: bold;
 }
 
 .listnotes {
-  padding: 0px;
-  color:#bcbcbc;
+  padding: 0;
+  color: #bcbcbc;
   list-style-type: none;
 }
 
 .listnotes li::before {
-  content: "✱ ";
+  content: '✱ ';
 }
 
 .textcat {
   line-height: 1.6;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 
 .textesp {
-  color:#535353;
-  font-family: "IBM Plex Mono", monospace;
+  color: #535353;
+  font-family: 'IBM Plex Mono', monospace;
   font-weight: 300;
   font-style: italic;
   line-height: 1.6;
 }
 
 .img-projects {
-  width:100%;
+  width: 100%;
 }
 
 .padding-big {
-  padding: 0rem 5rem;
-}
-
-.custom-link {
-  padding: 1rem;
-  border: 1.5px dashed #000000;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  display: inline-block;
+  padding: 0 5rem;
 }
 
 @media screen and (max-width: 600px) {
   .padding-big {
-    padding: 0rem 1rem;
+    padding: 0 1rem;
   }
+}
+
+.custom-link {
+  display: inline-block;
+  padding: 1rem;
+  border: 1.5px dashed black;
+  margin-bottom: 1rem;
+  text-decoration: none;
 }
 
 .fade-in {
@@ -184,7 +181,7 @@ a:hover {
   color: #757575;
 }
 
-/* Ocultar en pantallas grandes */
+/* Responsive display */
 @media (min-width: 768px) {
   .menu-mobile {
     display: none;
@@ -195,9 +192,7 @@ a:hover {
   .divmenu {
     display: none;
   }
-}
 
-@media (max-width: 767px) {
   .margin-mobile-top {
     margin-top: 80px;
   }
@@ -207,7 +202,7 @@ a:hover {
   position: fixed;
   top: 20px;
   right: 20px;
-  z-index: 999;
+  z-index: 9999;
 }
 
 .hamburger {
@@ -217,16 +212,13 @@ a:hover {
   width: 35px;
   height: 30px;
   position: relative;
-  z-index: 1000;
-  background: yellow !important;
-  position: relative !important;
-  z-index: 9999 !important;
 }
 
 .hamburger span {
-  display: block !important;
-  width: 100% !important;
-  height: 3px !important;
-  background: red !important;
-  margin: 5px 0 !important;
+  display: block;
+  width: 20px;
+  height: 3px;
+  background: black;
+  margin: 5px 0;
+  transition: all 0.3s ease;
 }
