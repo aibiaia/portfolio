@@ -228,3 +228,7 @@ a:hover {
   margin: 6px 0;
   transition: all 0.3s ease;
 }
+
+.hamburger span {
+  background: red !important;
+}
