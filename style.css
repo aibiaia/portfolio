@@ -106,7 +106,8 @@ a:hover {
   padding: 1rem;
   border: 1.5px dashed #000000;
   margin-top: 1rem;
-
+  margin-bottom: 1rem;
+  display: inline-block;
 }
 
 @media screen and (max-width: 600px) {
@@ -153,4 +154,84 @@ a:hover {
 .scroll-top.show {
   opacity: 1;
   pointer-events: auto;
+}
+
+.menu-mobile {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.nav-mobile {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: white;
+  border: 1.5px dashed black;
+  padding: 1.5rem;
+  width: 250px;
+  text-align: right;
+  box-sizing: border-box;
+}
+
+.nav-mobile a {
+  display: block;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
+  font-family: 'Manrope';
+  font-weight: 200;
+  font-size: 20px;
+}
+
+.nav-mobile a:hover {
+  color: #757575;
+}
+
+/* Ocultar en pantallas grandes */
+@media (min-width: 768px) {
+  .menu-mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .divmenu {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .margin-mobile-top {
+    margin-top: 80px;
+  }
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 35px;
+  height: 40px;
+  position: relative;
+  z-index: 1000;
+}
+
+.hamburger span {
+  display: block;
+  height: 1.5px;
+  background: black;
+  margin: 5px 0;
+  transition: all 0.3s ease;
 }
