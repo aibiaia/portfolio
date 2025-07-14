@@ -207,6 +207,35 @@ En paralelo, creé Casa Plana, un espacio cultural autogestionado en São Paulo 
 </div>
 </body>
 <script>
+
+
+
+const scrollTopButton = document.querySelector('.scroll-top');
+const toggleButton = document.getElementById('toggle-menu');
+const mobileNav = document.getElementById('mobile-nav');
+
+
+
+// SCROLL 2 TOP BUTTON
+
+// EL botó scroll to top només es mostra quan has fet una mica d'scroll (00)
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    scrollTopButton.classList.add('show');
+  } else {
+    scrollTopButton.classList.remove('show');
+  }
+});
+
+//Quan cliques el botó scroll to top, et posiciona la web a dalt de tot (top: 0) de manera smooth
+scrollTopButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// MENU DESKTOP
+
+//Fa que al clicar una opcio de menu vagi fins aquell punt
 document.querySelectorAll('.scroll-link').forEach(link => {
   link.addEventListener('click', function(e) {
     e.preventDefault(); // Evitar canvi de URL
@@ -217,32 +246,28 @@ document.querySelectorAll('.scroll-link').forEach(link => {
   });
 });
 
-const scrollTopButton = document.querySelector('.scroll-top');
 
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 300) {
-    scrollTopButton.classList.add('show');
-  } else {
-    scrollTopButton.classList.remove('show');
-  }
-});
+// MENU MOBILE
 
-scrollTopButton.addEventListener('click', (e) => {
-  e.preventDefault();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-const toggleButton = document.getElementById('toggle-menu');
-const mobileNav = document.getElementById('mobile-nav');
-
-toggleButton.addEventListener('click', () => {
-  mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
-});
-
+//Això oculta els menus de mobile un cop en cliques un
 document.querySelectorAll('.nav-mobile a').forEach(link => {
   link.addEventListener('click', () => {
     mobileNav.style.display = 'none';
   });
+});
+
+// Això mostra o oculta el menu 'hamburguesa' quan el cliques 
+// Sempre fa la accio contraria --> si el menu esta 'display: block' el posa a 'display:none'
+toggleButton.addEventListener('click', (e) => {
+  e.stopPropagation();
+  mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
+});
+
+//Això fa que si cliques a qualsevol lloc de la web, i el menu està visible, l'oculti
+document.addEventListener('click', (e) => {
+  if (mobileNav.style.display === 'block') {
+    mobileNav.style.display = 'none';
+  }
 });
 </script>
 </html>
