@@ -156,21 +156,6 @@ a:hover {
   pointer-events: auto;
 }
 
-.menu-mobile {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 999;
-}
-
-.hamburger {
-  background: none;
-  border: none;
-  font-size: 32px;
-  cursor: pointer;
-  font-family: 'IBM Plex Mono', monospace;
-}
-
 .nav-mobile {
   display: none;
   position: absolute;
