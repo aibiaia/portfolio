@@ -1,7 +1,6 @@
 
 body {
   margin: 0;
-  padding: 3rem;
   font-family: 'IBM Plex Mono', monospace;
   background: #EDECE9;
   color: #000;
@@ -80,6 +79,38 @@ header, footer {
 .padding-big {
   padding: 0rem 5rem;
 }
+
+.custom-link {
+  padding: 1rem;
+  border: 1.5px dashed #000000;
+  margin-top: 2rem;
+  color: #000000;
+  text-decoration: none; 
+}
+
+.custom-link:hover {
+  color: #757575;
+}
+
+@media screen and (max-width: 600px) {
+  .padding-big {
+    padding: 0rem 1rem;
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 /*
 .intro {
