@@ -218,7 +218,6 @@ a:hover {
   height: 30px;
   position: relative;
   z-index: 1000;
-  background: yellow !important;
 }
 
 .hamburger span {
@@ -228,5 +227,4 @@ a:hover {
   background: black;
   margin: 6px 0;
   transition: all 0.3s ease;
-  background: red !important;
 }
