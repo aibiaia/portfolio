@@ -17,6 +17,7 @@
     <p>Diseñadora gráfica, editorial y audiovisual</p>
   </header>-->
   <main>
+</div>
     <div class="container p-lg-4 p-sm-1 fade-in">
       <!--intro-->
       <div class="row div-project pt-0">
@@ -32,6 +33,7 @@
           <a href="#" data-target="#div-plana" class="mr-2 scroll-link">plana</a><br/>
           <a href="#" data-target="#div-autopubli" class="mr-2 scroll-link">auto i/o publicació</a><br/>
           <a href="#" data-target="#div-disseny" class="mr-2 scroll-link">disseny</a><br/>
+          <img src="icono-menu.png" class="img-floating" alt="Decoración">
         </div>
       </div>
       <!--no libros-->
@@ -54,37 +56,37 @@
         </div>
         <div class="col-sm-12 col-lg-8 divimg">
           <div class="col-12">
-            <img src="./nolibros_top.png" class="img-projects"/>
+            <img src="./nolibros_top.png" class="img-projects img-hover-change" alt="Imagen"/>
           </div>
           <div class="col-12" style="position:relative;">
-            <div class="row col-12" style="height:100%; display: flex;position:absolute;background-color:gray;opacity:0.7;margin:auto;">
+            <div class="row col-12" style="height:100%; display: flex; position:absolute; margin:auto;">
               <div class="row col-12 dvbookgroup">
-                <div class="col dvbook"></div>
-                <div class="col dvbook"></div>
-                <div class="col dvbook"></div>
-                <div class="col dvbook"></div>
-                <div class="col dvbook"></div>
+                <div class="col dvbook hover-box id1" data-icon="icon1.png"></div>
+                <div class="col dvbook hover-box id2" data-icon="icon2.png"></div>
+                <div class="col dvbook hover-box id3" data-icon="icon3.png"></div>
+                <div class="col dvbook hover-box id4" data-icon="icon5.png"></div>
+                <div class="col dvbook hover-box id5" data-icon="icon6.png"></div>
               </div>
               <div class="row col-12 dvbookgroup">
-                <div class="col dvbook"></div>
-                <div class="col dvbook"></div>
-                <div class="col dvbook"></div>
-                <div class="col dvbook"></div>
-                <div class="col dvbook"></div>
+                <div class="col dvbook hover-box id6" data-icon="icon6.png"></div>
+                <div class="col dvbook hover-box id7" data-icon="icon5.png"></div>
+                <div class="col dvbook hover-box id8" data-icon="icon1.png"></div>
+                <div class="col dvbook hover-box id9" data-icon="icon2.png"></div>
+                <div class="col dvbook hover-box id10" data-icon="icon3.png"></div>
               </div>
               <div class="row col-12 dvbookgroup">
-                <div class="col dvbook"></div>
-                <div class="col dvbook"></div>
-                <div class="col dvbook"></div>
-                <div class="col dvbook"></div>
-                <div class="col dvbook"></div>
+                <div class="col dvbook hover-box id11" data-icon="icon2.png"></div>
+                <div class="col dvbook hover-box id12" data-icon="icon3.png"></div>
+                <div class="col dvbook hover-box id13" data-icon="icon5.png"></div>
+                <div class="col dvbook hover-box id14" data-icon="icon6.png"></div>
+                <div class="col dvbook hover-box id15" data-icon="icon1.png"></div>
               </div>
               <div class="row col-12 dvbookgroup">
-                <div class="col dvbook"></div>
-                <div class="col dvbook"></div>
-                <div class="col dvbook"></div>
-                <div class="col dvbook"></div>
-                <div class="col dvbook"></div>
+                <div class="col dvbook hover-box id16" data-icon="icon1.png"></div>
+                <div class="col dvbook hover-box id17" data-icon="icon2.png"></div>
+                <div class="col dvbook hover-box id18" data-icon="icon3.png"></div>
+                <div class="col dvbook hover-box id19" data-icon="icon6.png"></div>
+                <div class="col dvbook hover-box id20" data-icon="icon5.png"></div>
               </div>
             </div>
 
@@ -240,6 +242,14 @@ En paralelo, creé Casa Plana, un espacio cultural autogestionado en São Paulo 
     <a href="#" data-target="#div-disseny" class="scroll-link">disseny</a>
   </nav>
 </div>
+<div id="popup" class="popup-overlay" style="display: none;">
+  <div class="popup-content">
+    <button id="cerrar-popup" class="btn-cerrar">
+      <img src="close.png" alt="Cerrar" btn-cerrar />
+    </button>
+    <div id="popup-body"></div>
+  </div>
+</div>
 </body>
 <script>
 
@@ -287,7 +297,7 @@ document.querySelectorAll('.scroll-link').forEach(link => {
 //Això oculta els menus de mobile un cop en cliques un
 document.querySelectorAll('.nav-mobile a').forEach(link => {
   link.addEventListener('click', () => {
-    mobileNav.style.display = 'none';
+    mobileNav.style.display = 'flex';
   });
 });
 
@@ -304,5 +314,649 @@ document.addEventListener('click', (e) => {
     mobileNav.style.display = 'none';
   }
 });
+
+// HOVER IMATGES
+document.querySelectorAll('.hover-box').forEach(box => {
+  const imgUrl = box.getAttribute('data-icon');
+  box.style.setProperty('--bg-img', `url(${imgUrl})`);
+  box.style.setProperty('--bg-img-hover', `url(${imgUrl})`);
+});
+
+//Això fa que si cliques a qualsevol lloc de la web, i el menu està visible, l'oculti
+document.querySelectorAll('.dvbook').forEach(element => {
+  element.addEventListener('click', (e) => {
+    console.log(element.classList);
+    var ar_classes = [...element.classList];
+    var idbook = ar_classes.find((val) => val.startsWith("id"));
+    for( var i = 0, len = datos_cast.length; i < len; i++ ) {
+      
+      if(datos_cast[i]["ID"] === idbook){
+        var txt = "";
+        for(const [key, value] of Object.entries(datos_cast[i])){
+          if(key === "Titol"){
+              txt += "<h3 class='texth3 mb-4'>"+value+"</h3>";
+          }
+          else if(key == "Més info"){
+              txt += "<a class='custom-link' href='"+value+"' target='_blank'>Més Info</a>";
+          }
+          else{
+            if( key !== "ID"){
+              txt += "<p>"+key+": "+value+"</p>";
+            }
+          }
+        }
+        document.getElementById("popup-body").innerHTML =txt;
+        document.getElementById("popup").style.display ="flex";
+      }
+    }
+  });
+});
+
+document.getElementById("cerrar-popup").addEventListener('click', (e) => {
+        document.getElementById("popup").style.display ="none";
+
+});
+
+//DATOS
+
+//DATOS CAST
+const datos_cast = [
+  {
+    "Titol": "Anarquia y lucha antipolítica",
+    "Autor": "Acácio Augusto",
+    "Tipus": "Libro de bolsillo",
+    "Any": 2019,
+    "Format": "12 × 18 cm",
+    "Pàgines": 64,
+    "ISBN": "978-85-53109-18-0",
+    "Disseny de coberta": "Felipe de Leonardo",
+    "Edició": "Bia Bittencourt",
+    "Traducció": "John O'Kuinghttons",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impresión Digital",
+    "Més info": "https://www.nolibros.org/product/anarquia-y-lucha-antipolitica/10?cs=true&cst=custom",
+    "ID": "id1"
+  },
+  {
+    "Titol": "Manual de prácticas del autobús",
+    "Autor": "Gabriel Weber",
+    "Tipus": "Llibre",
+    "Any": 2024,
+    "Format": "17 x 24 cm",
+    "Pàgines": 120,
+    "ISBN": "120978-84-126845-4-4",
+    "Disseny de coberta": "Bia Bittencourt",
+    "Edició": "Bia Bittencourt",
+    "Traducció": "John O'Kuinghttons",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impresión Digital",
+    "Més info": "https://www.nolibros.org/product/manual-de-pr-cticas-del-autob-s-474-jacar-copacabana/16?cs=true&cst=custom",
+    "ID": "id2"
+  },
+  {
+    "Titol": "Muerte de la democracia",
+    "Autor": "Franco \"Bifo\" Berardi, Lior Zalis, Diego Posada",
+    "Tipus": "Libro de bolsillo",
+    "Any": 2021,
+    "Format": "14 x 22 cm",
+    "Pàgines": 76,
+    "ISBN": "978-85-5109-21-0",
+    "Disseny de coberta": "Mantraste",
+    "Edició": "Bia Bittencourt, Laura Del Vecchio",
+    "Traducció": "John O'Kuinghttons",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impresión Digital",
+    "Més info": "https://www.nolibros.org/product/muerte-de-la-democracia/9?cs=true&cst=custom",
+    "ID": "id3"
+  },
+  {
+    "Titol": "Biblioteca de mi casa",
+    "Autor": "Walter Benjamin, Nathanael Araujo",
+    "Tipus": "Llibre",
+    "Any": 2023,
+    "Format": "24 x 17 cm",
+    "Pàgines": 64,
+    "ISBN": "978-84-126845-2-0",
+    "Disseny de coberta": "Bia Bittencourt",
+    "Edició": "Bia Bittencourt",
+    "Traducció": "Bia Bittencourt",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impresión Digital",
+    "Més info": "https://www.nolibros.org/product/biblioteca-de-mi-casa/3?cs=true&cst=custom",
+    "ID": "id4"
+  },
+  {
+    "Titol": "Biblioteca de casa meva",
+    "Autor": "Walter Benjamin, Nathanael Araujo",
+    "Tipus": "Llibre",
+    "Any": 2023,
+    "Format": "25 x 17 cm",
+    "Pàgines": 64,
+    "ISBN": "978-84-126845-2-1",
+    "Disseny de coberta": "Bia Bittencourt",
+    "Edició": "Bia Bittencourt",
+    "Traducció": "Jordi Puyoles Calafell",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impresión Digital",
+    "Més info": "https://www.nolibros.org/product/biblioteca-de-mi-casa/3?cs=true&cst=custo",
+    "ID": "id5"
+  },
+  {
+    "Titol": "La terra dona, la terra vol",
+    "Autor": "Antonio Nêgo Bispo",
+    "Tipus": "Llibre",
+    "Any": 2025,
+    "Format": "15 x 21 cm",
+    "Pàgines": 98,
+    "ISBN": "978-84-126845-5-1",
+    "Disseny de coberta": "Estúdio Casa Rex",
+    "Edició": "Bia Bittencourt",
+    "Traducció": "Jèssica Cañagueral Pallarés",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impresión Digital",
+    "Més info": "https://www.nolibros.org/product/la-terra-dona-la-terra-vol-antonio-nego-bispo/18?cs=true&cst=custom",
+    "ID": "id6"
+  },
+  {
+    "Titol": "50+1 Blues Llum Ombra",
+    "Autor": "Enric Puyoles",
+    "Tipus": "Llibre",
+    "Any": 2024,
+    "Format": "14 x 22 cm",
+    "Pàgines": 260,
+    "ISBN": "978-85-53109-26-5",
+    "Disseny de coberta": "Bia Bittencourt",
+    "Edició": "Jordi Puyoles Calafell",
+    "Traducció": "",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impresión Digital",
+    "Més info": "",
+    "ID": "id7"
+  },
+  {
+    "Titol": "Plaga",
+    "Autor": "Grupo de Investigación Ecologías Culturales PEI",
+    "Tipus": "Llibre",
+    "Any": 2021,
+    "Format": "15 x 21 cm",
+    "Pàgines": 98,
+    "ISBN": "fake-001",
+    "Disseny de coberta": "Estudio Ara",
+    "Edició": "Macba",
+    "Traducció": "",
+    "Imprès a": "Barcelona",
+    "Tècnica d’impressió": "Impresión Digital",
+    "Més info": "https://www.macba.cat/es/exposiciones/plaga-2/",
+    "ID": "id8"
+  },
+  {
+    "Titol": "Descontentos en la cultura",
+    "Autor": "Sarah Wood",
+    "Tipus": "Llibre",
+    "Any": 2022,
+    "Format": "15 x 21 cm",
+    "Pàgines": 80,
+    "ISBN": "978-85-53109-17-3",
+    "Disseny de coberta": "Bia Bittencourt",
+    "Edició": "Bia Bittencourt",
+    "Traducció": "John O'Kuinghttons",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impresión Digital",
+    "Més info": "https://www.nolibros.org/product/descontentos-en-la-cultura/5?cs=true&cst=custom",
+    "ID": "id9"
+  },
+  {
+    "Titol": "The incomplete lexicon of art",
+    "Autor": "Lucas Kröeff",
+    "Tipus": "Llibre",
+    "Any": 2020,
+    "Format": "14 x 22 cm",
+    "Pàgines": "",
+    "ISBN": "978-85-53109-23-4",
+    "Disseny de coberta": "Lucas Kröeff",
+    "Edició": "Lucas Kröeff",
+    "Traducció": "",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impresión Digital",
+    "Més info": "https://www.nolibros.org/product/incomplete-lexicon-of-art/8?cs=true&cst=custom",
+    "ID": "id10"
+  },
+  {
+    "Titol": "Nada sino diseño",
+    "Autor": "Luis Alegre",
+    "Tipus": "Llibre",
+    "Any": 2022,
+    "Format": "10,5 x 17 cm",
+    "Pàgines": 320,
+    "ISBN": "978-85-53109-24-1",
+    "Disseny de coberta": "Sara Farias",
+    "Edició": "Diogo Montenegro",
+    "Traducció": "John O'Kuinghttons",
+    "Imprès a": "MB&F",
+    "Tècnica d’impressió": "Offset",
+    "Més info": "https://www.nolibros.org/product/nada-sino-diseno/6?cs=true&cst=custom",
+    "ID": "id11"
+  },
+  {
+    "Titol": "Louise Bourgeois y modos feministas de crear",
+    "Autor": "Gabriela Barzaghi De Laurentiis",
+    "Tipus": "Llibre",
+    "Any": 2020,
+    "Format": "15 x 21 cm",
+    "Pàgines": 184,
+    "ISBN": "978-84-126845-1-3",
+    "Disseny de coberta": "Lucas Kröeff",
+    "Edició": "Bia Bittencourt",
+    "Traducció": "John O'Kuinghttons",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impresión Digital",
+    "Més info": "https://www.nolibros.org/product/louise-bourgeois-y-modos-feministas-de-crear/7?cs=true&cst=custom",
+    "ID": "id12"
+  },
+  {
+    "Titol": "Exiliados del tiempo lento",
+    "Autor": "Vivian Abenshushan",
+    "Tipus": "Llibre",
+    "Any": 2024,
+    "Format": "19 x 12 m",
+    "Pàgines": 188,
+    "ISBN": "978-84-126845-3-7",
+    "Disseny de coberta": "Bia Bittencourt",
+    "Edició": "Bia Bittencourt",
+    "Traducció": "",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impresión Digital",
+    "Més info": "https://www.nolibros.org/product/exiliados-del-tiempo-lento/1?cs=true&cst=custom",
+    "ID": "id13"
+  },
+  {
+    "Titol": "物博士预言的末日",
+    "Autor": "Fabio Zimbres",
+    "Tipus": "Comic",
+    "Any": 2019,
+    "Format": "15 x 21 cm",
+    "Pàgines": 24,
+    "ISBN": "978-85-53109-16-6",
+    "Disseny de coberta": "Bia Bittencourt",
+    "Edició": "Bia Bittencourt",
+    "Traducció": "Yaya Liu",
+    "Imprès a": "La Escocesa",
+    "Tècnica d’impressió": "Risograph",
+    "Més info": "",
+    "ID": "id14"
+  },
+  {
+    "Titol": "Roube o livro enquanto o sol está nascendo no horizonte",
+    "Autor": "David Horvitz",
+    "Tipus": "Llibre",
+    "Any": 2019,
+    "Format": "15 x 10 cm",
+    "Pàgines": 48,
+    "ISBN": "978-3-945900-28-4",
+    "Disseny de coberta": "Edition Taube",
+    "Edició": "",
+    "Traducció": "Bia Bittencourt",
+    "Imprès a": "",
+    "Tècnica d’impressió": "Offset",
+    "Més info": "https://www.nolibros.org/product/roube-o-livro/11?cs=true&cst=custom",
+    "ID": "id15"
+  },
+  {
+    "Titol": "De la subcontratar",
+    "Autor": "Nick Thurston",
+    "Tipus": "",
+    "Any": 2019,
+    "Format": "20 x 13 cm",
+    "Pàgines": 145,
+    "ISBN": "978-8-412684-50-6",
+    "Disseny de coberta": "Bia Bittencourt",
+    "Edició": "",
+    "Traducció": "Google Translator",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impresión Digital",
+    "Més info": "https://www.nolibros.org/product/de-la-subcontratar/4?si=true",
+    "ID": "id16"
+  },
+  {
+    "Titol": "RES01 - res_és_nostre",
+    "Autor": "modular_juns",
+    "Tipus": "Llibre",
+    "Any": 2023,
+    "Format": "15 x 21 cm",
+    "Pàgines": 48,
+    "ISBN": "978-85-53109-25-8",
+    "Disseny de coberta": "Bia Bittencourt",
+    "Edició": "No Libos + Hivern Discs",
+    "Traducció": "",
+    "Imprès a": "Do the print",
+    "Tècnica d’impressió": "Risograph",
+    "Més info": "https://www.nolibros.org/product/res01-res-s-nostre-modular-juns/17?cs=true&cst=custom",
+    "ID": "id17"
+  },
+  {
+    "Titol": "Les Jardins et la Nuit",
+    "Autor": "Vicente Franz Cecim",
+    "Tipus": "Llibre",
+    "Any": 2019,
+    "Format": "30 x 21 cm",
+    "Pàgines": 158,
+    "ISBN": "fake-002",
+    "Disseny de coberta": "Lucas Kröeff",
+    "Edició": "Bia Bittencourt",
+    "Traducció": "",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impressió digital",
+    "Més info": "https://www.nolibros.org/product/les-jardins-et-la-nuit/14?cs=true&cst=custom",
+    "ID": "id18"
+  },
+  {
+    "Titol": "Os Jardins e a Noite",
+    "Autor": "Vicente Franz Cecim",
+    "Tipus": "Llibre",
+    "Any": 2019,
+    "Format": "30 x 21 cm",
+    "Pàgines": 158,
+    "ISBN": "fake-002",
+    "Disseny de coberta": "Lucas Kröeff",
+    "Edició": "Bia Bittencourt",
+    "Traducció": "",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impresión Digital",
+    "Més info": "https://www.nolibros.org/product/les-jardins-et-la-nuit/14?cs=true&cst=custom",
+    "ID": "id19"
+  }
+]
+
+const datos_cat = [
+  {
+    "Titol": "Anarquia y lucha antipolítica",
+    "Autor": "Acácio Augusto",
+    "Tipus": "Llibre de butxaca",
+    "Any": 2019,
+    "Format": "12 × 18 cm",
+    "Pàgines": 64,
+    "ISBN": "978-85-53109-18-0",
+    "Disseny de coberta": "Felipe de Leonardo",
+    "Edició": "Bia Bittencourt",
+    "Traducció": "John O'Kuinghttons",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impressió digital",
+    "Més info": "https://www.nolibros.org/product/anarquia-y-lucha-antipolitica/10?cs=true&cst=custom"
+  },
+  {
+    "Titol": "Manual de prácticas del autobús",
+    "Autor": "Gabriel Weber",
+    "Tipus": "Llibre",
+    "Any": 2024,
+    "Format": "17 x 24 cm",
+    "Pàgines": 120,
+    "ISBN": "120978-84-126845-4-4",
+    "Disseny de coberta": "Bia Bittencourt",
+    "Edició": "Bia Bittencourt",
+    "Traducció": "John O'Kuinghttons",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impressió digital",
+    "Més info": "https://www.nolibros.org/product/manual-de-pr-cticas-del-autob-s-474-jacar-copacabana/16?cs=true&cst=custom"
+  },
+  {
+    "Titol": "Muerte de la democracia",
+    "Autor": "Franco \"Bifo\" Berardi, Lior Zalis, Diego Posada",
+    "Tipus": "Llibre de butxaca",
+    "Any": 2021,
+    "Format": "14 x 22 cm",
+    "Pàgines": 76,
+    "ISBN": "978-85-5109-21-0",
+    "Disseny de coberta": "Mantraste",
+    "Edició": "Bia Bittencourt, Laura Del Vecchio",
+    "Traducció": "John O'Kuinghttons",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impressió digital",
+    "Més info": "https://www.nolibros.org/product/muerte-de-la-democracia/9?cs=true&cst=custom"
+  },
+  {
+    "Titol": "Biblioteca de mi casa",
+    "Autor": "Walter Benjamin, Nathanael Araujo",
+    "Tipus": "Llibre",
+    "Any": 2023,
+    "Format": "24 x 17 cm",
+    "Pàgines": 64,
+    "ISBN": "978-84-126845-2-0",
+    "Disseny de coberta": "Bia Bittencourt",
+    "Edició": "Bia Bittencourt",
+    "Traducció": "Bia Bittencourt",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impressió digital",
+    "Més info": "https://www.nolibros.org/product/biblioteca-de-mi-casa/3?cs=true&cst=custom"
+  },
+  {
+    "Titol": "Biblioteca de casa meva",
+    "Autor": "Walter Benjamin, Nathanael Araujo",
+    "Tipus": "Llibre",
+    "Any": 2023,
+    "Format": "25 x 17 cm",
+    "Pàgines": 64,
+    "ISBN": "978-84-126845-2-1",
+    "Disseny de coberta": "Bia Bittencourt",
+    "Edició": "Bia Bittencourt",
+    "Traducció": "Jordi Puyoles Calafell",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impressió digital",
+    "Més info": "https://www.nolibros.org/product/biblioteca-de-mi-casa/3?cs=true&cst=custo"
+  },
+  {
+    "Titol": "La terra dona, la terra vol",
+    "Autor": "Antonio Nêgo Bispo",
+    "Tipus": "Llibre",
+    "Any": 2025,
+    "Format": "15 x 21 cm",
+    "Pàgines": 98,
+    "ISBN": "978-84-126845-5-1",
+    "Disseny de coberta": "Estúdio Casa Rex",
+    "Edició": "Bia Bittencourt",
+    "Traducció": "Jèssica Cañagueral Pallarés",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impressió digital",
+    "Més info": "https://www.nolibros.org/product/la-terra-dona-la-terra-vol-antonio-nego-bispo/18?cs=true&cst=custom"
+  },
+  {
+    "Titol": "50+1 Blues Llum Ombra",
+    "Autor": "Enric Puyoles",
+    "Tipus": "Llibre",
+    "Any": 2024,
+    "Format": "14 x 22 cm",
+    "Pàgines": 260,
+    "ISBN": "978-85-53109-26-5",
+    "Disseny de coberta": "Bia Bittencourt",
+    "Edició": "Jordi Puyoles Calafell",
+    "Traducció": "",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impressió digital",
+    "Més info": ""
+  },
+  {
+    "Titol": "Plaga",
+    "Autor": "Grupo de Investigación Ecologías Culturales PEI",
+    "Tipus": "Llibre",
+    "Any": 2021,
+    "Format": "15 x 21 cm",
+    "Pàgines": 98,
+    "ISBN": "fake-001",
+    "Disseny de coberta": "Estudio Ara",
+    "Edició": "Macba",
+    "Traducció": "",
+    "Imprès a": "Barcelona",
+    "Tècnica d’impressió": "Impressió digital",
+    "Més info": "https://www.macba.cat/es/exposiciones/plaga-2/"
+  },
+  {
+    "Titol": "Descontentos en la cultura",
+    "Autor": "Sarah Wood",
+    "Tipus": "Llibre",
+    "Any": 2022,
+    "Format": "15 x 21 cm",
+    "Pàgines": 80,
+    "ISBN": "978-85-53109-17-3",
+    "Disseny de coberta": "Bia Bittencourt",
+    "Edició": "Bia Bittencourt",
+    "Traducció": "John O'Kuinghttons",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impressió digital",
+    "Més info": "https://www.nolibros.org/product/descontentos-en-la-cultura/5?cs=true&cst=custom"
+  },
+  {
+    "Titol": "The incomplete lexicon of art",
+    "Autor": "Lucas Kröeff",
+    "Tipus": "Llibre",
+    "Any": 2020,
+    "Format": "14 x 22 cm",
+    "Pàgines": "",
+    "ISBN": "978-85-53109-23-4",
+    "Disseny de coberta": "Lucas Kröeff",
+    "Edició": "Lucas Kröeff",
+    "Traducció": "",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impressió digital",
+    "Més info": "https://www.nolibros.org/product/incomplete-lexicon-of-art/8?cs=true&cst=custom"
+  },
+  {
+    "Titol": "Nada sino diseño",
+    "Autor": "Luis Alegre",
+    "Tipus": "Llibre",
+    "Any": 2022,
+    "Format": "10,5 x 17 cm",
+    "Pàgines": 320,
+    "ISBN": "978-85-53109-24-1",
+    "Disseny de coberta": "Sara Farias",
+    "Edició": "Diogo Montenegro",
+    "Traducció": "John O'Kuinghttons",
+    "Imprès a": "MB&F",
+    "Tècnica d’impressió": "Offset",
+    "Més info": "https://www.nolibros.org/product/nada-sino-diseno/6?cs=true&cst=custom"
+  },
+  {
+    "Titol": "Louise Bourgeois y modos feministas de crear",
+    "Autor": "Gabriela Barzaghi De Laurentiis",
+    "Tipus": "Llibre",
+    "Any": 2020,
+    "Format": "15 x 21 cm",
+    "Pàgines": 184,
+    "ISBN": "978-84-126845-1-3",
+    "Disseny de coberta": "Lucas Kröeff",
+    "Edició": "Bia Bittencourt",
+    "Traducció": "John O'Kuinghttons",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impressió digital",
+    "Més info": "https://www.nolibros.org/product/louise-bourgeois-y-modos-feministas-de-crear/7?cs=true&cst=custom"
+  },
+  {
+    "Titol": "Exiliados del tiempo lento",
+    "Autor": "Vivian Abenshushan",
+    "Tipus": "Llibre",
+    "Any": 2024,
+    "Format": "19 x 12 m",
+    "Pàgines": 188,
+    "ISBN": "978-84-126845-3-7",
+    "Disseny de coberta": "Bia Bittencourt",
+    "Edició": "Bia Bittencourt",
+    "Traducció": "",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impressió digital",
+    "Més info": "https://www.nolibros.org/product/exiliados-del-tiempo-lento/1?cs=true&cst=custom"
+  },
+  {
+    "Titol": "物博士预言的末日",
+    "Autor": "Fabio Zimbres",
+    "Tipus": "Comic",
+    "Any": 2019,
+    "Format": "15 x 21 cm",
+    "Pàgines": 24,
+    "ISBN": "978-85-53109-16-6",
+    "Disseny de coberta": "Bia Bittencourt",
+    "Edició": "Bia Bittencourt",
+    "Traducció": "Yaya Liu",
+    "Imprès a": "La Escocesa",
+    "Tècnica d’impressió": "Risograph",
+    "Més info": ""
+  },
+  {
+    "Titol": "Roube o livro enquanto o sol está nascendo no horizonte",
+    "Autor": "David Horvitz",
+    "Tipus": "Llibre",
+    "Any": 2019,
+    "Format": "15 x 10 cm",
+    "Pàgines": 48,
+    "ISBN": "978-3-945900-28-4",
+    "Disseny de coberta": "Edition Taube",
+    "Edició": "",
+    "Traducció": "Bia Bittencourt",
+    "Imprès a": "",
+    "Tècnica d’impressió": "Offset",
+    "Més info": "https://www.nolibros.org/product/roube-o-livro/11?cs=true&cst=custom"
+  },
+  {
+    "Titol": "De la subcontratar",
+    "Autor": "Nick Thurston",
+    "Tipus": "",
+    "Any": 2019,
+    "Format": "20 x 13 cm",
+    "Pàgines": 145,
+    "ISBN": "978-8-412684-50-6",
+    "Disseny de coberta": "Bia Bittencourt",
+    "Edició": "",
+    "Traducció": "Google Translator",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impressió digital",
+    "Més info": "https://www.nolibros.org/product/de-la-subcontratar/4?si=true"
+  },
+  {
+    "Titol": "RES01 - res_és_nostre",
+    "Autor": "modular_juns",
+    "Tipus": "Llibre",
+    "Any": 2023,
+    "Format": "15 x 21 cm",
+    "Pàgines": 48,
+    "ISBN": "978-85-53109-25-8",
+    "Disseny de coberta": "Bia Bittencourt",
+    "Edició": "No Libos + Hivern Discs",
+    "Traducció": "",
+    "Imprès a": "Do the print",
+    "Tècnica d’impressió": "Risograph",
+    "Més info": "https://www.nolibros.org/product/res01-res-s-nostre-modular-juns/17?cs=true&cst=custom"
+  },
+  {
+    "Titol": "Les Jardins et la Nuit",
+    "Autor": "Vicente Franz Cecim",
+    "Tipus": "Llibre",
+    "Any": 2019,
+    "Format": "30 x 21 cm",
+    "Pàgines": 158,
+    "ISBN": "fake-002",
+    "Disseny de coberta": "Lucas Kröeff",
+    "Edició": "Bia Bittencourt",
+    "Traducció": "",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impressió digital",
+    "Més info": "https://www.nolibros.org/product/les-jardins-et-la-nuit/14?cs=true&cst=custom"
+  },
+  {
+    "Titol": "Os Jardins e a Noite",
+    "Autor": "Vicente Franz Cecim",
+    "Tipus": "Llibre",
+    "Any": 2019,
+    "Format": "30 x 21 cm",
+    "Pàgines": 158,
+    "ISBN": "fake-002",
+    "Disseny de coberta": "Lucas Kröeff",
+    "Edició": "Bia Bittencourt",
+    "Traducció": "",
+    "Imprès a": "Podiprint, Màlaga",
+    "Tècnica d’impressió": "Impressió digital",
+    "Més info": "https://www.nolibros.org/product/les-jardins-et-la-nuit/14?cs=true&cst=custom"
+  }
+]
+
+console.log(datos_cast);
+console.log(datos_cat);
+
 </script>
 </html>
